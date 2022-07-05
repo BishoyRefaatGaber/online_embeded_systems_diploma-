@@ -4,7 +4,7 @@
 
 void main(){
 	int x,y;
-	printf("enter the of elements");
+	printf("enter the number of elements");
 	fflush(stdin);fflush(stdout);
 	scanf("%d",&x);
 	float arr[x+5],m;
@@ -23,7 +23,7 @@ void main(){
 	x++;
 	arr[y-1]=m;
 	for(int i=0;i<x;i++){
-		printf("%f",arr[i]);
+		printf("%.2f  ",arr[i]);
 	}
 }
 
