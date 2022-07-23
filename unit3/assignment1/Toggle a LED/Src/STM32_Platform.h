@@ -58,3 +58,4 @@ typedef volatile long long int   vsint_64;
 
 
 #endif /* STM32_PLATFORM_H_ */
+/*hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh*/
