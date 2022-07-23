@@ -16,6 +16,9 @@ typedef unsigned char            uint_8;
 typedef unsigned short int       uint_16;
 typedef unsigned int             uint_32;
 typedef unsigned long long int   uint_64;
+
+
+/*non-volatile real*/
 typedef float                    float_32;
 typedef double                   double_64;
 typedef long double              ldouble_80;
@@ -34,6 +37,9 @@ typedef volatile unsigned char            vuint_8;
 typedef volatile unsigned short int       vuint_16;
 typedef volatile unsigned int             vuint_32;
 typedef volatile unsigned long long int   vuint_64;
+
+
+/*volatile real*/
 typedef volatile float                    vfloat_32;
 typedef volatile double                   vdouble_64;
 typedef volatile long double              vldouble_80;
