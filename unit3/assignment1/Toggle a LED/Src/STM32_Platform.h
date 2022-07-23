@@ -19,9 +19,15 @@ typedef unsigned long long int   uint_64;
 
 
 /*non-volatile real*/
+<<<<<<< HEAD
 typedef float                    float_32;
 typedef double                   double_64;
 typedef long double              ldouble_80;
+=======
+typedef float           ufloat_32;
+typedef double          udouble_64;
+typedef long double     uldouble_80;
+>>>>>>> 6a532e6e4d70faee8308c59a8cd7c6f38ad95a04
 
 
 /*non-volatile signed*/
@@ -30,6 +36,10 @@ typedef char            sint_8;
 typedef short int       sint_16;
 typedef int             sint_32;
 typedef long long int   sint_64;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6a532e6e4d70faee8308c59a8cd7c6f38ad95a04
 
 
 /*volatile unsigned*/
@@ -39,10 +49,18 @@ typedef volatile unsigned int             vuint_32;
 typedef volatile unsigned long long int   vuint_64;
 
 
+<<<<<<< HEAD
 /*volatile real*/
 typedef volatile float                    vfloat_32;
 typedef volatile double                   vdouble_64;
 typedef volatile long double              vldouble_80;
+=======
+
+/* volatile real */
+typedef volatile float           vufloat_32;
+typedef volatile double          vudouble_64;
+typedef volatile long double     vuldouble_80;
+>>>>>>> 6a532e6e4d70faee8308c59a8cd7c6f38ad95a04
 
 
 /*volatile signed*/
