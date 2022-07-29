@@ -1,0 +1,2 @@
+arm-none-eabi-nm.exe uart.o
+00000000 T uart_send_string

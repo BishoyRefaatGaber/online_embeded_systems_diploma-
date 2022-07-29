@@ -1,0 +1,4 @@
+ arm-none-eabi-nm.exe app.o
+00000000 T main
+00000000 D stringaia
+         U uart_send_string
