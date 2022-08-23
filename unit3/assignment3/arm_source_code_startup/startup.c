@@ -1,59 +1,51 @@
+#include "Platform.h"
+/*HANDLER DEFINITION*/
 
-#include<stdio.h>
 
+extern uint_32 _stack_top;
+extern uint_32 _S_DATA;
+extern uint_32 _E_DATA;
+extern uint_32 _S_bss;
+extern uint_32 _E_bss;
+extern uint_32 _E_text;
 
-extern unsigned int _stack_top;
-extern int main(void);
+extern int main();
 void Reset_Handler(void);
-void Default_Handler()
-{
-    Reset_Handler();
+
+void Default_Handler(void){
+	Reset_Handler();
 }
 
-void NMI_Handler()__attribute__((weak,alias ("Default_Handler")));;
-void H_fault_Handler()__attribute__((weak,alias ("Default_Handler")));;
-void MM_fault_Handler()__attribute__((weak,alias ("Default_Handler")));;
-void Bus_fault()__attribute__((weak,alias ("Default_Handler")));;
-void Usage_fault_Handler()__attribute__((weak,alias ("Default_Handler")));;
+void NMI_Handler(void)__attribute__((weak,alias("Default_Handler")));;
+void H_fault_handler(void)__attribute__((weak,alias("Default_Handler")));;
+void MM_Fault_handler(void)__attribute__((weak,alias("Default_Handler")));;
+void Bus_Fault_handler(void)__attribute__((weak,alias("Default_Handler")));;
+/*HANDLER SECTIONING*/
 
-unsigned int Vectors[] __attribute__((section(".Vectors")))={
-(unsigned int)         &_stack_top,
-(unsigned int)         &Reset_Handler,
-(unsigned int)         &NMI_Handler,
-(unsigned int)         &H_fault_Handler,
-(unsigned int)         &MM_fault_Handler,
-(unsigned int)         &Bus_fault,
-(unsigned int)         &Usage_fault_Handler
+uint_32 vectors[]__attribute__((section(".vectors"))) = {
+	(uint_32) &_stack_top,
+	(uint_32) &Reset_Handler,
+	(uint_32) &NMI_Handler,
+	(uint_32) &H_fault_handler,
+	(uint_32) &MM_Fault_handler,
+	(uint_32) &Bus_Fault_handler	
 };
-extern unsigned int  _E_text;
-extern unsigned int  _S_DATA;
-extern unsigned int  _E_DATA;
-extern unsigned int  _S_bss;
-extern unsigned int  _E_bss;
 
-void Reset_Handler(void)
-{
-    // copy data from ROM to RAM
-    unsigned int  DATA_size = (unsigned char *)&_E_DATA - (unsigned char *)&_S_DATA;
-    unsigned char  * p_src=(unsigned char *)&_E_text;
-    unsigned char * p_dst=(unsigned char *)&_S_DATA;
-    unsigned int  i;
-    for( i=0;i<DATA_size;i++)
-    {
-        *((unsigned char *)p_dst++)=*((unsigned char *)p_src++);
-    }
+void Reset_Handler(void){
+	uint_32 DATA_SIZE = (uint_8)&_E_DATA - (uint_8)&_S_DATA;
+	uint_8* p_src =(uint_8*)&_E_text;
+	uint_8* p_dst =(uint_8*)&_S_DATA;
+	uint_32 i;
+	for (i=0;i<DATA_SIZE;i++){
+		*((uint_8*)p_dst++) = *((uint_8*)p_src++);
+	}
 
-    // init the bss sectoin with zero
-    
-    unsigned int bss_size = (unsigned char *)&_E_bss - (unsigned char *)&_S_bss; 
-    p_dst=(unsigned char *)&_S_bss;
 
-    for(i=0;i<bss_size;i++)
-    {
-        *((unsigned char *)p_dst++)=(unsigned char)0;
-    }    
+	uint_32 BSS_SIZE = (uint_8*)&_E_bss - (uint_8*)&_S_bss;
+	p_dst =(uint_8*)&_S_bss;
+	for (i=0;i<BSS_SIZE;i++){
+		*((uint_8*)p_dst++) = (uint_8)0;
+	}
 
-    // jump to main 
-
-    main();
+	main();
 }
