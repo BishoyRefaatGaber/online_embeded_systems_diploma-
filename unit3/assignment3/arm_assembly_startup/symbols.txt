@@ -1,0 +1,7 @@
+symbols of .elf with startup in assembly code
+
+$ arm-none-eabi-nm.exe learn_in_depth.elf
+080000ec t _reset
+08000044 T main
+080000f4 D R_ODR
+080000f2 t Vector_handler
