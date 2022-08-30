@@ -1,0 +1,2 @@
+$ arm-none-eabi-nm.exe app.o
+00000000 T main

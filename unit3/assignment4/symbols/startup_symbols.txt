@@ -1,0 +1,15 @@
+arm-none-eabi-nm.exe startup.o
+         U _E_bss
+         U _E_DATA
+         U _E_text
+         U _S_bss
+         U _S_DATA
+00000000 W Bus_Fault_handler
+00000000 T Default_Handler
+00000000 R g_p_fn_vectors
+00000000 W H_fault_handler
+         U main
+00000000 W MM_Fault_handler
+00000000 W NMI_Handler
+0000000c T Reset_Handler
+00000000 b stack_top

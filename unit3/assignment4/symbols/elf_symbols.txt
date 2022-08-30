@@ -1,0 +1,15 @@
+arm-none-eabi-nm.exe learn_in_depth.elf
+20000800 B _E_bss
+20000000 T _E_DATA
+00000194 T _E_text
+20000000 B _S_bss
+20000000 T _S_DATA
+000000d0 W Bus_Fault_handler
+000000d0 T Default_Handler
+00000000 T g_p_fn_vectors
+000000d0 W H_fault_handler
+00000018 T main
+000000d0 W MM_Fault_handler
+000000d0 W NMI_Handler
+000000dc T Reset_Handler
+20000000 b stack_top
