@@ -3,7 +3,7 @@ int main(){
 	LIFO_BUFF MY_ITEM;
 	LIFO_DATA_TYPE TYPE;
 	OPERATION operation;
-label:
+while(1){
 	PRINTF("ENTER OPERATION\n");
 	PRINTF("%d : INITALIZE\n",INITALIZE);
 	PRINTF("%d : PUSH_ITEM\n",PUSH_ITEM);
@@ -51,6 +51,6 @@ label:
             print(&MY_ITEM,TYPE);
             break;
     }
-    goto label;
+   }
 	return 0;
 }
