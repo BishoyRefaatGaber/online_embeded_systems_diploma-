@@ -1,0 +1,136 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+PVal                0x4               main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+flash            0x08000000         0x00020000         xr
+sram             0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x08000000      0x16c
+ *(.vectors*)
+ .vectors       0x08000000       0x44 startup.o
+ *(.text*)
+ .text          0x08000044       0x20 Alarm_Monitor.o
+                0x08000044                High_Pressure_Detected
+ .text          0x08000064       0xc8 driver.o
+                0x08000064                Delay
+                0x08000080                getPressureVal
+                0x08000098                Set_Alarm_actuator
+                0x080000d8                GPIO_INITIALIZATION
+ .text          0x0800012c       0x38 main.o
+                0x0800012c                main
+ .text          0x08000164        0x8 startup.o
+
+.data           0x0800016c        0x0
+ .data          0x0800016c        0x0 Alarm_Monitor.o
+ .data          0x0800016c        0x0 driver.o
+ .data          0x0800016c        0x0 main.o
+ .data          0x0800016c        0x0 startup.o
+
+.igot.plt       0x0800016c        0x0
+ .igot.plt      0x00000000        0x0 Alarm_Monitor.o
+
+.glue_7         0x0800016c        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x0800016c        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x0800016c        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x0800016c        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x0800016c        0x0
+ .iplt          0x00000000        0x0 Alarm_Monitor.o
+
+.rel.dyn        0x0800016c        0x0
+ .rel.iplt      0x00000000        0x0 Alarm_Monitor.o
+
+.dss            0x20000000        0x0
+ *(.bss*)
+ .bss           0x20000000        0x0 Alarm_Monitor.o
+ .bss           0x20000000        0x0 driver.o
+ .bss           0x20000000        0x0 main.o
+ .bss           0x20000000        0x0 startup.o
+LOAD Alarm_Monitor.o
+LOAD driver.o
+LOAD main.o
+LOAD startup.o
+OUTPUT(Pressure_Detection.elf elf32-littlearm)
+
+.debug_info     0x00000000      0x2de
+ .debug_info    0x00000000       0xa4 Alarm_Monitor.o
+ .debug_info    0x000000a4      0x103 driver.o
+ .debug_info    0x000001a7       0xca main.o
+ .debug_info    0x00000271       0x6d startup.o
+
+.debug_abbrev   0x00000000      0x158
+ .debug_abbrev  0x00000000       0x40 Alarm_Monitor.o
+ .debug_abbrev  0x00000040       0x9d driver.o
+ .debug_abbrev  0x000000dd       0x67 main.o
+ .debug_abbrev  0x00000144       0x14 startup.o
+
+.debug_loc      0x00000000      0x120
+ .debug_loc     0x00000000       0x2c Alarm_Monitor.o
+ .debug_loc     0x0000002c       0xc8 driver.o
+ .debug_loc     0x000000f4       0x2c main.o
+
+.debug_aranges  0x00000000       0x80
+ .debug_aranges
+                0x00000000       0x20 Alarm_Monitor.o
+ .debug_aranges
+                0x00000020       0x20 driver.o
+ .debug_aranges
+                0x00000040       0x20 main.o
+ .debug_aranges
+                0x00000060       0x20 startup.o
+
+.debug_line     0x00000000      0x161
+ .debug_line    0x00000000       0x41 Alarm_Monitor.o
+ .debug_line    0x00000041       0x9c driver.o
+ .debug_line    0x000000dd       0x49 main.o
+ .debug_line    0x00000126       0x3b startup.o
+
+.debug_str      0x00000000      0x148
+ .debug_str     0x00000000       0xd9 Alarm_Monitor.o
+                                0x119 (size before relaxing)
+ .debug_str     0x000000d9       0x55 driver.o
+                                0x12e (size before relaxing)
+ .debug_str     0x0000012e       0x1a main.o
+                                0x10c (size before relaxing)
+
+.comment        0x00000000       0x11
+ .comment       0x00000000       0x11 Alarm_Monitor.o
+                                 0x12 (size before relaxing)
+ .comment       0x00000000       0x12 driver.o
+ .comment       0x00000000       0x12 main.o
+
+.ARM.attributes
+                0x00000000       0x30
+ .ARM.attributes
+                0x00000000       0x32 Alarm_Monitor.o
+ .ARM.attributes
+                0x00000032       0x32 driver.o
+ .ARM.attributes
+                0x00000064       0x32 main.o
+ .ARM.attributes
+                0x00000096       0x22 startup.o
+
+.debug_frame    0x00000000       0xe0
+ .debug_frame   0x00000000       0x2c Alarm_Monitor.o
+ .debug_frame   0x0000002c       0x88 driver.o
+ .debug_frame   0x000000b4       0x2c main.o
+
+.bss            0x20000000        0x4
+ COMMON         0x20000000        0x4 main.o
+                0x20000000                PVal
