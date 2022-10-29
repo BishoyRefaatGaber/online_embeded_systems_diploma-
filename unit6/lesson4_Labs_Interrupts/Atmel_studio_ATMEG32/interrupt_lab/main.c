@@ -31,7 +31,9 @@ void main(void){
 	while (1);
 }
 
-ISR(INT0_vect)
+ 
+void __vector_1 (void) __attribute__((signal));
+void __vector_1 (void)
 {
 	//DDRD = 0xff;
 	IO_PORTD |= (1 << 5);
@@ -40,7 +42,8 @@ ISR(INT0_vect)
 	
 }
 
-ISR(INT1_vect)
+void __vector_2 (void) __attribute__((signal));
+void __vector_2 (void)
 {
 	//DDRD = 0xff;
 	IO_PORTD |= (1 << 6);
@@ -48,7 +51,8 @@ ISR(INT1_vect)
 	IO_PORTD &= ~(1 << 6);
 }
 
-ISR(INT2_vect)
+void __vector_3 (void) __attribute__((signal));
+void __vector_3 (void)
 {
 	//DDRD = 0xff;
 	IO_PORTD |= (1 << 7);

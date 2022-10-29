@@ -116,10 +116,11 @@ void main(void){
   a2:	ff cf       	rjmp	.-2      	; 0xa2 <main+0x4>
 
 000000a4 <__vector_1>:
-	while (1);
 }
 
-ISR(INT0_vect)
+ 
+void __vector_1 (void) __attribute__((signal));
+void __vector_1 (void)
 {
   a4:	1f 92       	push	r1
   a6:	0f 92       	push	r0
@@ -167,7 +168,8 @@ ISR(INT0_vect)
 
 000000e2 <__vector_2>:
 
-ISR(INT1_vect)
+void __vector_2 (void) __attribute__((signal));
+void __vector_2 (void)
 {
   e2:	1f 92       	push	r1
   e4:	0f 92       	push	r0
@@ -208,7 +210,8 @@ ISR(INT1_vect)
 
 00000120 <__vector_3>:
 
-ISR(INT2_vect)
+void __vector_3 (void) __attribute__((signal));
+void __vector_3 (void)
 {
  120:	1f 92       	push	r1
  122:	0f 92       	push	r0
