@@ -1,0 +1,4 @@
+"./Inc/learn_in_depth.o"
+"./Src/syscalls.o"
+"./Src/sysmem.o"
+"./Startup/startup_stm32f103c6tx.o"
