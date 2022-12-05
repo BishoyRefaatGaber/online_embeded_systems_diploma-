@@ -34,10 +34,10 @@ void PORT_INIT(){
 	DDRC |= 0xE7; //output for the 3 LEDs & the 2 COMs for 7SEG & 3 inputs for LEDs(Switches) 0b11100111
 	PORTC |= (1 << 3); // activate pull up resistance for input pin 3
 }
-// void delay (unsigned char x){
-// 	unsigned long i;
-// 	for (i = 0 ; i < (x * F_CPU) ; i++);
-// }
+void delay (unsigned char x){
+	unsigned long i;
+	for (i = 0 ; i < x*(6400000000000) ; i++);
+}
 void COUNTER_VALUE (unsigned char x){
 	unsigned char  j;
 	for (j=0;j<=x;j++){
@@ -63,27 +63,29 @@ int main(void)
 		if(((PINC & (1 << 3)) >> 3 ) == 0){
 			if (count == 0){
 			PORTC |= (1 << 0);
-			_delay_ms(10);
+			while(((PINC & (1 << 3)) >> 3 ) == 0);
 			COUNTER_VALUE (++count);
 			}
 			else if (count == 1){
 				PORTC |= (1 << 1);
-				_delay_ms(10);
+				while(((PINC & (1 << 3)) >> 3 ) == 0);
 				COUNTER_VALUE (++count);
 			}
 			else if (count == 2){
 				PORTC |= (1 << 2);
-				_delay_ms(10);
+				while(((PINC & (1 << 3)) >> 3 ) == 0);
 				COUNTER_VALUE (++count);
-				COUNTER_VALUE (count);
+			}
+			else if (count == 3){
 				PORTC |= (1 << 5);
-				_delay_ms(150);
+				while(((PINC & (1 << 3)) >> 3 ) == 0);
+				_delay_ms(2000);
 				PORTC &= ~(1 << 5);
 				PORTC &= ~(1 << 0);
 				PORTC &= ~(1 << 1);
 				PORTC &= ~(1 << 2);
 				count = 0;
-			}	
+			}
   }
 }
 }
