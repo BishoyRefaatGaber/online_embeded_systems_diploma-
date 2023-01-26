@@ -4,15 +4,16 @@ int keypad_R [4]= {R0 , R1 , R2 , R3};
 int keypad_C [4]= {C0 , C1 , C2 , C3};
 void KEYPAD_INIT(){
 	KEYPAD_COLUMNS_DIR |= COLUMNS_PINS;
-	KEYPAD_COLUMNS_PORT |= COLUMNS_PINS;
+	KEYPAD_COLUMNS_PORT (KEYPAD_COLUMNS_PORT & ~COLUMNS_PINS) | COLUMNS_PINS;
 	KEYPAD_ROWS_DIR &= ~(ROW_PINS);
 	KEYPAD_ROWS_PORT |= (ROW_PINS);
 }
 char KEYPAD_GET_CHAR(){
 	int i,j;
+	
 	for (i = 0; i < 4; i++){
-		KEYPAD_COLUMNS_PORT |= COLUMNS_PINS;
-		KEYPAD_COLUMNS_PORT &= ~(1 << keypad_C[i]);
+		KEYPAD_COLUMNS_PORT = (KEYPAD_COLUMNS_PORT & ~COLUMNS_PINS) | COLUMNS_PINS;
+		KEYPAD_COLUMNS_PORT &= (1 << keypad_C[i]);
 		for(j = 0; j < 4 ; j++){
 			if(!(KEYPAD_ROWS_PIN & (1 << keypad_R[j]))){
 				while(!(KEYPAD_ROWS_PIN & (1 << keypad_R[j])));

@@ -1,41 +1,44 @@
 /*
  * LCD_DRIVER.h
  *
- * Created: 12/3/2022 8:32:25 PM
- *  Author: Bishoy Refaat
+ *  Created on: Jan 22, 2023
+ *      Author: Bishoy Refaat
  */
 
 
 #ifndef _LCD_DRIVER_H_
 #define _LCD_DRIVER_H_
 
-//                       **************DECUMENTATION**************   
+#include "STM32F103xx.h"
+#include "GPIO.h"
+
+//                       **************DECUMENTATION**************
 //__________________________________________________________________________
 //LCD_PIN  RS | R/W | E   |  DB0 | DB1 | DB2 | DB3 | DB4 | DB5 | DB6 | DB7
-//PORT_PIN B7 | B6  |B5   |  A0  | A1  | A2  | A3  | A4  | A5  | A6  | A7   
+//PORT_PIN B7 | B6  |B5   |  A0  | A1  | A2  | A3  | A4  | A5  | A6  | A7
 //__________________________________________________________________________
 
 		/**************************************/
 //#define INPUT  0x00
 //#define OUTPUT 0xFF
-#define LCD_INPUT_PINS
-#define PORT_OUTPUT_PINS
-#define MOST_BIT_PIN
-#define LEAST_BIT_PIN 
-#define RS
-#define EN
-#define WR
-#define BF_PIN
+#define LCD_INPUT_PINS      0xFFFFFF00
+#define PORT_OUTPUT_PINS 	 0x000000FF
+//#define MOST_BIT_PIN
+//#define LEAST_BIT_PIN
+#define RS  	GPIO_PIN_8
+#define WR  	GPIO_PIN_9
+#define EN  	GPIO_PIN_10
+//#define BF_PIN 	GPIO_PIN_7
 //MICROCONTROLLER CONFIGURATIONS
-#define LCD_DATA              
-#define LCD_CTRL             
-#define LCD_DATA_DIR         
-#define LCD_CTRL_DIR        
-#define CONFIG_DATA_CTRL(x,y) LCD_DATA_DIR = ((LCD_DATA_DIR & PORT_INPUT_PINS) | PORT_##x##_PINS); LCD_CTRL_DIR = ((LCD_DATA_DIR & PORT_INPUT_PINS) | PORT_##y##_PINS);
+#define LCD_DATA 			GPIOA->ODR
+#define LCD_CTRL            GPIOA->ODR
+//#define LCD_DATA_DIR		GPIOA->CRL
+//#define LCD_CTRL_DIR		GPIOA->CRH
+//#define CONFIG_DATA_CTRL(x,y) LCD_DATA_DIR = ((LCD_DATA_DIR & PORT_INPUT_PINS) | PORT_##x##_PINS); LCD_CTRL_DIR = ((LCD_DATA_DIR & PORT_INPUT_PINS) | PORT_##y##_PINS);
 		/**************************************/
 
 //LCD CONTROL
-#define LCD_ENABLE                   LCD_CTRL |=(1<<EN); _delay_ms(50); LCD_CTRL&= ~(1<<EN); _delay_us(200);						
+#define LCD_ENABLE                   LCD_CTRL |= (1<<EN); wait_ms(50); LCD_CTRL &= ~(1<<EN); wait_ms(200);
 #define LCD_READ_DATA                      ((1<<WR) | (1<<RS))
 #define LCD_READ_INSTRUCTION               ((1<<WR) & ~(1<<RS))
 #define LCD_WRITE_DATA                     (~(1<<WR) & (1<<RS))
@@ -51,7 +54,7 @@
 		/**************************************/
 
 //LCD INSTRUCTIONS
-#define LCD_Clear_Display              0x01 
+#define LCD_Clear_Display              0x01
 #define LCD_Return_Home                0x02
 #define LCD_Enty_Mode_Set_Dec          0x04
 #define LCD_Enty_Mode_Set_Inc_Shift    0x05
@@ -91,4 +94,8 @@ void LCD_WRITE_STRING(char* string);
 void GOTO_XY(unsigned char x ,unsigned char y);
 void LCD_WRITE_COMMAND(unsigned char command);
 void LCD_WRITE_CHAR(unsigned char character);
+extern void wait_ms(uint32_t time);
 #endif
+
+
+
