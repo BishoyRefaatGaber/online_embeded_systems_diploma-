@@ -1,7 +1,0 @@
-STM32F103C6/GPIO.o: ../STM32F103C6/GPIO.c \
- C:/Users/refaa/STM32CubeIDE/workspace_1.4.0/DRIVERS/STM32F103C6/Inc/GPIO.h \
- C:/Users/refaa/STM32CubeIDE/workspace_1.4.0/DRIVERS/STM32F103C6/Inc/STM32F103xx.h \
- C:/Users/refaa/STM32CubeIDE/workspace_1.4.0/DRIVERS/STM32F103C6/Inc/STM32F103xx.h
-C:/Users/refaa/STM32CubeIDE/workspace_1.4.0/DRIVERS/STM32F103C6/Inc/GPIO.h:
-C:/Users/refaa/STM32CubeIDE/workspace_1.4.0/DRIVERS/STM32F103C6/Inc/STM32F103xx.h:
-C:/Users/refaa/STM32CubeIDE/workspace_1.4.0/DRIVERS/STM32F103C6/Inc/STM32F103xx.h:

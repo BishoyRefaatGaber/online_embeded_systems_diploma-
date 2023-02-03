@@ -1,4 +1,0 @@
-../Src/main.c:65:6:init	8	static
-../Src/main.c:145:6:wait_ms	24	static
-../Src/main.c:152:6:EXTI9_CALLBACK	8	static
-../Src/main.c:158:5:main	40	static
