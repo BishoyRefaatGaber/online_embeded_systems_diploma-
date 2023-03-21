@@ -8,7 +8,7 @@
 
 
 #include "LCD_DRIVER.h"
-#include "main.h"
+#include "GPIO.h"
 #include "util/delay.h"
 #include "avr/io.h"
 #include "stdlib.h"

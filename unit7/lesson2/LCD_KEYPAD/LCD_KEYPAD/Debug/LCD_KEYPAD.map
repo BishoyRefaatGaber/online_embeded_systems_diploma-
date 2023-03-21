@@ -664,15 +664,15 @@ END GROUP
  .debug_frame   0x00000034       0xf8 LCD/LCD_DRIVER.o
  .debug_frame   0x0000012c       0x24 main.o
 
-.debug_str      0x00000000      0x444
+.debug_str      0x00000000      0x44d
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_str     0x00000196      0x17f KEYPAD/KEYPAD_DRIVER.o
-                                0x1b8 (size before relaxing)
- .debug_str     0x00000315      0x11e LCD/LCD_DRIVER.o
-                                0x28e (size before relaxing)
- .debug_str     0x00000433       0x11 main.o
-                                0x1be (size before relaxing)
+ .debug_str     0x00000196      0x188 KEYPAD/KEYPAD_DRIVER.o
+                                0x1c1 (size before relaxing)
+ .debug_str     0x0000031e      0x11e LCD/LCD_DRIVER.o
+                                0x297 (size before relaxing)
+ .debug_str     0x0000043c       0x11 main.o
+                                0x1c7 (size before relaxing)
 
 .debug_loc      0x00000000      0x5e0
  *(.debug_loc)

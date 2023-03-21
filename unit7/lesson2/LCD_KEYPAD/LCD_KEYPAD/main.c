@@ -9,7 +9,7 @@
 #endif
 #include "LCD/LCD_DRIVER.h"
 #include "KEYPAD/KEYPAD_DRIVER.h"
-#include "main.h"
+#include "GPIO.h"
 #include "util/delay.h"
 #include "stdlib.h"
 
